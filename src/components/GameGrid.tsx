@@ -9,7 +9,7 @@ const GameGrid = () => {
   return (
     <>
       {error && <Text>{error}</Text>}
-      <SimpleGrid minChildWidth="sm" gap={10} padding={10}>
+      <SimpleGrid minChildWidth="sm" gap={5} padding={3}>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
         {data.map((game) => (
