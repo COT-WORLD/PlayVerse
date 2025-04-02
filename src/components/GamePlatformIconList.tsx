@@ -7,12 +7,14 @@ import {
   FaPlaystation,
   FaLinux,
   FaAndroid,
+  FaGamepad,
 } from "react-icons/fa";
 
 import { MdPhoneIphone } from "react-icons/md";
-import { SiNintendo } from "react-icons/si";
+import { SiAtari, SiCommodore, SiNintendo, SiSega } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons";
+import { GrGamepad } from "react-icons/gr";
 
 interface Props {
   platforms: Platform[];
@@ -29,6 +31,11 @@ const GamePlatformIconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     android: FaAndroid,
     web: BsGlobe,
+    "neo-geo": FaGamepad,
+    "3do": GrGamepad,
+    atari: SiAtari,
+    "commodore-amiga": SiCommodore,
+    sega: SiSega,
   };
   return (
     <HStack marginY={1}>
