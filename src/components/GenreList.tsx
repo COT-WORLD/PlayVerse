@@ -1,4 +1,5 @@
 import {
+  Heading,
   HStack,
   Image,
   Link,
@@ -26,6 +27,9 @@ const GenreList = ({ onSelectGenere, selectedGenre }: Props) => {
     );
   return (
     <>
+      <Heading fontSize="2xl" marginBottom={2}>
+        Genres
+      </Heading>
       {error && <Text>{error}</Text>}
       <List.Root gap={3} variant="plain" align="center">
         {data.map((genre) => (
@@ -34,6 +38,7 @@ const GenreList = ({ onSelectGenere, selectedGenre }: Props) => {
               <Image
                 boxSize="32px"
                 borderRadius={8}
+                objectFit="cover"
                 src={getCroppedImageUrl(genre.image_background)}
               />
               <Link
