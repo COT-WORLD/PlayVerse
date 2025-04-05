@@ -1,54 +1,54 @@
-# React + TypeScript + Vite
+# **PlayVerse**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## **Unlock the World of Gaming**
 
-Currently, two official plugins are available:
+PlayVerse is a cutting-edge web application designed to revolutionize the way you discover and explore games. Built with a passion for gaming and a commitment to innovation, PlayVerse provides a seamless and immersive experience for gamers of all levels.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Key Features**
 
-## Expanding the ESLint configuration
+- **Game Grid**: A stunning, responsive grid showcasing a curated selection of games, complete with high-quality images and essential details.
+- **Game Card**: Dive deeper into each game with detailed information, including platforms, critic scores, user ratings, and more.
+- **Game Search**: Quickly find your next favorite game with our powerful search functionality, filtering by title, genre, or platform.
+- **Game Filter**: Narrow down your options with our intuitive filtering system, allowing you to browse games by platform, genre, or rating.
+- **Color Mode**: Personalize your experience with our sleek light and dark modes, ensuring the perfect ambiance for your gaming journey.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## **API Integration**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+PlayVerse utilizes the Rawg.io API to fetch game data, providing users with accurate and up-to-date information. To use the API, you will need to obtain an API key from Rawg.io.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## **API Endpoint**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Base URL**: `https://api.rawg.io/api`
+- **API Key**: Required for authentication. Obtain your API key from Rawg.io.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## **API Documentation**
+
+For more information on the Rawg.io API, please refer to their official documentation: [https://rawg.io/apidocs](https://rawg.io/apidocs)
+
+## **Technical Details**
+
+- **Frontend**: Built with React, TypeScript, and Vite, ensuring a fast, scalable, and maintainable application.
+- **UI Components**: Leveraging Chakra UI for a consistent, visually appealing design.
+- **Icons**: Utilizing React Icons for a wide range of high-quality icons.
+- **ESLint**: Enforcing code quality with TypeScript ESLint.
+
+## **Getting Started**
+
+1. Clone the repository: `git clone https://github.com/COT-WORLD/PlayVerse.git`
+2. Install dependencies: `npm install` or `yarn install`
+3. Create a new file named `.env` in the root directory and add your Rawg.io API base URL and API key: `VITE_RAWG_API_KEY=your-api-key` `VITE_RAWG_BASE_URL=your-base-url`
+4. Start the development server: `npm run dev` or `yarn dev`
+5. Open your browser and navigate to `http://localhost:3000`
+
+## **License**
+
+PlayVerse is licensed under the MIT License.
+
+## **Acknowledgments**
+
+We would like to extend our gratitude to:
+
+- Rawg.io for providing a comprehensive API for game data.
+- Chakra UI for providing a comprehensive UI component library.
+- React Icons for offering a wide range of high-quality icons.
+- TypeScript ESLint for helping us maintain code quality.
