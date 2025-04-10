@@ -2,10 +2,15 @@
 
 ## **Unlock the World of Gaming**
 
-PlayVerse is a cutting-edge web application designed to revolutionize the way you discover and explore games. Built with a passion for gaming and a commitment to innovation, PlayVerse provides a seamless and immersive experience for gamers of all levels.
+PlayVerse is a React-based application that leverages **React Query** for efficient data fetching and caching, and **Context API** for centralized state management. The app is built with modern tools like **Vite**, **TypeScript**, and **Chakra UI** for a fast and scalable development experience.
 
 ## **Key Features**
 
+- **React Query** for data fetching, caching, and state management.
+- **Context API** for managing global state (`gameQuery`).
+- **Chakra UI** for responsive and accessible UI components.
+- **Axios** for making HTTP requests.
+- **TypeScript** for type safety and better developer experience.
 - **Game Grid**: A stunning, responsive grid showcasing a curated selection of games, complete with high-quality images and essential details.
 - **Game Card**: Dive deeper into each game with detailed information, including platforms, critic scores, user ratings, and more.
 - **Game Search**: Quickly find your next favorite game with our powerful search functionality, filtering by title, genre, or platform.
