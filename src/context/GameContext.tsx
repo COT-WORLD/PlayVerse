@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Genre } from "../hooks/useGenre";
 import { Platform } from "../hooks/useGames";
 
@@ -9,14 +9,18 @@ export interface GameQuery {
   searchText: string;
 }
 
-interface GameQueryContextProps {
+interface GameQueryContextType {
   gameQuery: GameQuery;
-  setGameQuery: (newGameQuery: GameQuery) => void;
+  setGameQuery: (query: GameQuery) => void;
 }
 
-export const GameContext = createContext<GameQueryContextProps | null>(null);
+const GameQueryContext = createContext<GameQueryContextType | undefined>(
+  undefined
+);
 
-export const GameProvider = ({ children }: { children: React.ReactNode }) => {
+export const GameQueryProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [gameQuery, setGameQuery] = useState<GameQuery>({
     genre: null,
     platform: null,
@@ -25,16 +29,16 @@ export const GameProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <GameContext.Provider value={{ gameQuery, setGameQuery }}>
+    <GameQueryContext.Provider value={{ gameQuery, setGameQuery }}>
       {children}
-    </GameContext.Provider>
+    </GameQueryContext.Provider>
   );
 };
 
-export const useGameContext = () => {
-  const context = useContext(GameContext);
+export const useGameQuery = () => {
+  const context = useContext(GameQueryContext);
   if (!context) {
-    throw new Error("useGameContext must be used within a GameProvider");
+    throw new Error("useGameQuery must be used within a GameQueryProvider");
   }
   return context;
 };
