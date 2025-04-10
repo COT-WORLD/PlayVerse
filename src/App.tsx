@@ -8,6 +8,7 @@ import GamePlatformSelector from "./components/GamePlatformSelector";
 import { Platform } from "./hooks/useGames";
 import GameSortSelector from "./components/GameSortSelector";
 import GameHeading from "./components/GameHeading";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -17,57 +18,63 @@ export interface GameQuery {
 }
 
 function App() {
+  const queryClient = new QueryClient();
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   return (
     <>
-      <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          md: `"nav nav" "aside main"`,
-          lg: `"nav nav" "aside main"`,
-        }}
-        templateColumns={{
-          base: ".5fr",
-          md: "150px 1fr",
-          lg: "200px 1fr",
-        }}
-      >
-        <GridItem area="nav">
-          <Navbar
-            onSearch={(searchText) =>
-              setGameQuery({ ...gameQuery, searchText })
-            }
-          />
-        </GridItem>
-        <Box display={{ base: "none", md: "block", lg: "block" }}>
-          <GridItem area="aside" paddingX={5}>
-            <GenreList
-              selectedGenre={gameQuery.genre}
-              onSelectGenere={(genre) => setGameQuery({ ...gameQuery, genre })}
+      <QueryClientProvider client={queryClient}>
+        <Grid
+          templateAreas={{
+            base: `"nav" "main"`,
+            md: `"nav nav" "aside main"`,
+            lg: `"nav nav" "aside main"`,
+          }}
+          templateColumns={{
+            base: ".5fr",
+            md: "150px 1fr",
+            lg: "200px 1fr",
+          }}
+        >
+          <GridItem area="nav">
+            <Navbar
+              onSearch={(searchText) =>
+                setGameQuery({ ...gameQuery, searchText })
+              }
             />
           </GridItem>
-        </Box>
-        <GridItem area="main">
-          <Box paddingLeft={3}>
-            <GameHeading gameQuery={gameQuery} />
-            <HStack marginBottom={2}>
-              <GamePlatformSelector
-                selectedPlatform={gameQuery.platform}
-                onSelectPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platform })
+          <Box display={{ base: "none", md: "block", lg: "block" }}>
+            <GridItem area="aside" paddingX={5}>
+              <GenreList
+                selectedGenre={gameQuery.genre}
+                onSelectGenere={(genre) =>
+                  setGameQuery({ ...gameQuery, genre })
                 }
               />
-              <GameSortSelector
-                sortOrder={gameQuery.sortOrder}
-                onSelectSortOrder={(sortOrder) =>
-                  setGameQuery({ ...gameQuery, sortOrder })
-                }
-              />
-            </HStack>
+            </GridItem>
           </Box>
-          <GameGrid gameQuery={gameQuery} />
-        </GridItem>
-      </Grid>
+          <GridItem area="main">
+            <Box paddingLeft={3}>
+              <GameHeading gameQuery={gameQuery} />
+              <HStack marginBottom={2}>
+                <GamePlatformSelector
+                  selectedPlatform={gameQuery.platform}
+                  onSelectPlatform={(platform) =>
+                    setGameQuery({ ...gameQuery, platform })
+                  }
+                />
+                <GameSortSelector
+                  sortOrder={gameQuery.sortOrder}
+                  onSelectSortOrder={(sortOrder) =>
+                    setGameQuery({ ...gameQuery, sortOrder })
+                  }
+                />
+              </HStack>
+            </Box>
+            <GameGrid gameQuery={gameQuery} />
+          </GridItem>
+        </Grid>
+      </QueryClientProvider>
     </>
   );
 }
