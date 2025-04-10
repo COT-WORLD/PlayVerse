@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import apiClient from "../services/api-client";
 import { AxiosRequestConfig, CanceledError } from "axios";
 
@@ -13,6 +13,7 @@ const useData = <T>(
   requestConfig?: AxiosRequestConfig,
   deps?: any[] // Dependencies for useEffect
 ) => {
+  const queryClient = useQueryClient(); // React Query client for cache management
   // State for manual fetching with useEffect
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -53,6 +54,8 @@ const useData = <T>(
         .then((res) => {
           setData(res.data.results);
           setIsLoading(false);
+          // Prepopulate React Query cache with the fetched data
+          queryClient.setQueryData([endpoint, requestConfig], res.data);
         })
         .catch((err) => {
           if (err instanceof CanceledError) return;
