@@ -20,6 +20,7 @@ const GameSearchInput = () => {
         <Input
           borderRadius={20}
           ref={ref}
+          id="search"
           placeholder="Search games...."
           variant="outline"
         />
