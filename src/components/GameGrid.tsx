@@ -1,21 +1,27 @@
-import { SimpleGrid, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text, useBreakpointValue } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { useGameQuery } from "../context/GameContext";
+import { useMemo } from "react";
 
 const GameGrid = () => {
   const { gameQuery } = useGameQuery();
   const { data, error, isLoading } = useGames(gameQuery);
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const skeletonCount =
+    useBreakpointValue({ base: 4, md: 6, lg: 9, xl: 12 }) || 9;
+
   if (error) return <Text>{error}</Text>;
+  const renderedGames = useMemo(() => {
+    return data.map((game) => <GameCard key={game.id} game={game} />);
+  }, [data]);
   return (
     <SimpleGrid minChildWidth="sm" gap={5} padding={3}>
       {isLoading &&
-        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
-      {data.map((game) => (
-        <GameCard key={game.id} game={game} />
-      ))}
+        Array(skeletonCount)
+          .fill(0)
+          .map((_, index) => <GameCardSkeleton key={index} />)}
+      {renderedGames}
     </SimpleGrid>
   );
 };
