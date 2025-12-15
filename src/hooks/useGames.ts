@@ -26,7 +26,7 @@ const useGames = (gameQuery: GameQuery) =>
         search: gameQuery.searchText,
       },
     },
-    [gameQuery]
+    Boolean(gameQuery)
   );
 
 export default useGames;

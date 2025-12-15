@@ -26,14 +26,14 @@ const GenreList = () => {
         <Text color="colorPalette.600">Loading...</Text>
       </VStack>
     );
+  if (error) return <Text color="red.500">{error.message}</Text>;
   return (
     <>
       <Heading fontSize="2xl" marginBottom={2}>
         Genres
       </Heading>
-      {error && <Text>{error}</Text>}
       <List.Root gap={3} variant="plain" align="center">
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <List.Item key={genre.id}>
             <HStack>
               <Image

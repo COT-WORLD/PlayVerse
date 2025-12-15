@@ -10,10 +10,9 @@ const GameGrid = () => {
   const { data, error, isLoading } = useGames(gameQuery);
   const skeletonCount =
     useBreakpointValue({ base: 4, md: 6, lg: 9, xl: 12 }) || 9;
-
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text color="red.500">{error.message}</Text>;
   const renderedGames = useMemo(() => {
-    return data.map((game) => <GameCard key={game.id} game={game} />);
+    return data?.map((game) => <GameCard key={game.id} game={game} />);
   }, [data]);
   return (
     <SimpleGrid minChildWidth="sm" gap={5} padding={3}>

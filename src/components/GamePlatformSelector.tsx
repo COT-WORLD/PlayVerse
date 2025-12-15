@@ -11,10 +11,9 @@ const GamePlatformSelector = () => {
     setGameQuery({ ...gameQuery, platform });
   };
   const { data, error } = usePlatforms();
-
+  if (error) return <Text color="red.500">{error.message}</Text>;
   return (
     <>
-      {error && <Text>{error}</Text>}
       <Menu.Root>
         <Menu.Trigger asChild>
           <Button variant="outline">
@@ -25,7 +24,7 @@ const GamePlatformSelector = () => {
         <Portal>
           <Menu.Positioner>
             <Menu.Content>
-              {data.map((platform) => (
+              {data?.map((platform) => (
                 <Menu.Item
                   key={platform.id}
                   onClick={() => onSelectdPlatform(platform)}

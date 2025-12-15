@@ -7,8 +7,8 @@ import GamePlatformSelector from "./components/GamePlatformSelector";
 import { Platform } from "./hooks/useGames";
 import GameSortSelector from "./components/GameSortSelector";
 import GameHeading from "./components/GameHeading";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { GameQueryProvider } from "./context/GameContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export interface GameQuery {
   genre: Genre | null;
