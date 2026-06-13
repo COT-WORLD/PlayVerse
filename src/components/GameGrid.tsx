@@ -1,10 +1,4 @@
-import {
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-  Center,
-  Spinner,
-} from "@chakra-ui/react";
+import { SimpleGrid, Text, Center, Spinner } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 import { useEffect, Fragment } from "react";
 import GameCard from "./GameCard";
@@ -20,7 +14,6 @@ const GameGrid = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isLoading, // still true while very first page is fetched
     isError,
     error,
   } = useGamesInfiniteDeferred(gameQuery);
